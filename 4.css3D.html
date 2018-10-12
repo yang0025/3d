@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3D图形转换</title>
+    <style>
+        body {
+            /* 设置视角与3d元素之间的距离 */
+            perspective: 900px;
+        }
+
+        main {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 50px auto;
+            /* 给子元素设置3d效果时,要给父元素设置保留3d效果 */
+            /* 保留子元素的3d转换效果 */
+            transform-style: preserve-3d;
+            animation: rotate 3s;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotateX(0) rotateY(0)
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg)
+            }
+
+        }
+
+        main div {
+            transform: translateZ(100px);
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+            position: absolute;
+        }
+        main .left{
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+        main:hover div{
+            /* 设置标签透明度 */
+            opacity: 0;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>我是一个div1</div>
+        <div class="left">我是div2</div>
+    </main>
+
+</body>
+
+</html>
